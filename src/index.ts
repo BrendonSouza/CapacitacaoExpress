@@ -13,8 +13,8 @@ AppDataSource.initialize()
   })
   .catch((error) => console.log(error));
 
-app.use(router)
 app.use(express.json());
+app.use(router)
 
 app.listen(port, () => {
   console.log(`Server is run in ${port}`);
