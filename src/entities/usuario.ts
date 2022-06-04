@@ -1,5 +1,6 @@
-import { Entity, PrimaryColumn, Column} from "typeorm"
+import { Entity, PrimaryColumn, Column, ManyToOne} from "typeorm"
 import {v4 as uuid} from 'uuid';
+import { Role } from "./roles";
 @Entity()
 export class Usuario {
     @PrimaryColumn()
@@ -11,10 +12,13 @@ export class Usuario {
     @Column()
     email: string
 
+    @ManyToOne(()=>Role, (role)=> role.usuarios)
+    role:Role
     constructor(){
         if(!this.id){
             this.id = uuid();
         }
     }
+
 
 }

@@ -2,9 +2,9 @@ import { Request, Response } from "express";
 import { UsuarioService } from "../services/usuarioService";
 class UsuarioController {
   async insereUsuario(req: Request, res: Response) {
-    const { nome, email } = req.body;
+    const { nome, email,role } = req.body;
     const usuarioService = new UsuarioService();
-    const usuario = await usuarioService.executeInsert({ nome, email }).catch((erro)=>{
+    const usuario = await usuarioService.executeInsert({ nome, email, role }).catch((erro)=>{
         res.status(422).json({
             message: erro.message
         }).send();
