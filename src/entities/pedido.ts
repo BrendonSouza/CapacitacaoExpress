@@ -7,14 +7,14 @@ export class Pedido {
 
     @Column()
     data: Date
-
+    
     @Column()
     descricao: string
-
+    
     @Column()
     valorTotal:number
 
-    @ManyToMany(() => Livro, livro => livro.pedidos)
+    @ManyToMany(() => Livro)
     @JoinTable({name: 'pedido_livro'})
     livros: Livro[]
 
